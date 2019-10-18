@@ -2,19 +2,19 @@ pragma solidity ^0.4.23;
 
 contract CoinYuc // @eachvar
 {
-    // ======== 初始化代币相关逻辑 =============
+    // ======== initializes the token correlation logic =============
     
-    // 定义账户余额
+    // Define account balance
     mapping(address => uint256) balances;
     
-    // solidity 会自动为 public 变量添加方法，有了下边这些变量，就能获得代币的基本信息了
+    // With the following variables, basic information about tokens can be obtained
     string public name = "Yount Unite Chain"; // @eachvar
     string public symbol = "YUC"; // @eachvar
     uint8 public decimals = 18; // @eachvar
     uint256 initSupply = 274000000; // @eachvar
     uint256 public totalSupply = 0; // @eachvar
 
-    // 生成代币，并转入到 account_address 地址
+    // Generate tokens and move them to the account_address address
     constructor() 
     payable 
     public
@@ -30,7 +30,7 @@ contract CoinYuc // @eachvar
         return balances[_addr];
     }
 
-    // ========== 转账相关逻辑 ====================
+    // ========== transfer related logic ====================
     event Transfer(
         address indexed from, 
         address indexed to, 
@@ -56,7 +56,7 @@ contract CoinYuc // @eachvar
         return true;
     }
 
-    // ========= 授权转账相关逻辑 =============
+    // ========= authorized transfer logic =============
     
     mapping (address => mapping (address => uint256)) internal allowed;
     event Approval(
@@ -148,7 +148,7 @@ contract CoinYuc // @eachvar
      
     
     
-    // ============== admin 相关函数 ==================
+    // ============== admin related functions ==================
     modifier admin_only()
     {
         require(msg.sender==admin_address);
@@ -166,7 +166,7 @@ contract CoinYuc // @eachvar
     }
 
     
-    // 虽然没有开启直投，但也可能转错钱的，给合约留一个提现口总是好的
+    // 
     function withDraw()
     public
     admin_only
@@ -175,7 +175,7 @@ contract CoinYuc // @eachvar
         admin_address.transfer(address(this).balance);
     }
         // ======================================
-    /// 默认函数
+    /// default function
     function () external payable
     {
                 
@@ -184,8 +184,8 @@ contract CoinYuc // @eachvar
            
     }
 
-    // ========== 公用函数 ===============
-    // 主要就是 safemath
+    // ========== utility function ===============
+    // The main is safemath
     function mul(uint256 a, uint256 b) internal pure returns (uint256 c) 
     {
         if (a == 0) 
