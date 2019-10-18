@@ -2,10 +2,7 @@ pragma solidity ^0.4.23;
 
 contract CoinYuc // @eachvar
 {
-    // ======== 初始化代币相关逻辑 ==============
-    // 地址信息
-    address public admin_address = 0x6C3f982f888B3dd39Df157263Fd45f1F3FA3126C; // @eachvar
-    address public account_address = 0x6C3f982f888B3dd39Df157263Fd45f1F3FA3126C; // @eachvar 初始化后转入代币的地址
+    // ======== 初始化代币相关逻辑 =============
     
     // 定义账户余额
     mapping(address => uint256) balances;
